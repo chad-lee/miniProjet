@@ -4,15 +4,15 @@ const Schema = mongoose.Schema;
 const machineSchema = new Schema({
     machineName: {
         type: String,
-        required: true
+        required: true,
     },
     machineDistro: {
         type: String,
-        required: true
+        required: true,
     },
     machineRam: {
         type: String,
-        required: true
+        required: true,
     },
 }, { timestamps: true });
 

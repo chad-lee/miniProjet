@@ -45,7 +45,6 @@ app.post('/thanks', (req, res) => {
     
     machine.save()
         .then((result) => {
-            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa');
             res.redirect('/thanks');
         })
         .catch((err) => {
