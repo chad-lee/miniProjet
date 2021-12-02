@@ -4,9 +4,17 @@
             <label for="machineName">machine name</label>
             <input type="text" name="machineName" id="machineName" required>
             <label for="machineDistro">machine distro</label>
-            <input type="text" id="machineDistro" name="machineDistro" required>
+            <select name="machineDistro" id="machineDistro">
+                <option value="ubuntu">ubuntu</option>
+                <option value="kali">kali</option>
+                <option value="debian">debian</option>
+            </select>
             <label for="machineRam">dedicated ram</label>
-            <input type="text" name="machineRam" id="machineRam" required>
+            <select name="machineRam" id="machineRam">
+                <option value="1">1Gb</option>
+                <option value="2">2Gb</option>
+                <option value="3">3Gb</option>
+            </select>
             <button>generate</button>
         </form>
     </div>
