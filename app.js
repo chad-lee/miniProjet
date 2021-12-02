@@ -25,6 +25,7 @@ app.set('view engine', 'ejs');
 
 //middleware and static files
 app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
 
 
 //routes
@@ -42,6 +43,7 @@ app.get('/thanks', (req, res) => {
 })
 app.post('/thanks', (req, res) => {
     const machine = new Machine(req.body);
+    console.log(req.body + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     
     machine.save()
         .then((result) => {
