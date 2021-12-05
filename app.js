@@ -59,7 +59,11 @@ app.post('/thanks', (req, res) => {
         console.log('updated!');
     })
     
-
+    
+    const file = `${__dirname}/vagrantfile`;
+    console.log(__dirname);
+    res.download(file); 
+    
 
     machine.save()
         .then((result) => {
