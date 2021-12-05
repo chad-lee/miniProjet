@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const Machine = require('./models/machspecs');
+const fs = require('fs');
 
 
 //express app
@@ -43,8 +44,23 @@ app.get('/thanks', (req, res) => {
 })
 app.post('/thanks', (req, res) => {
     const machine = new Machine(req.body);
-    console.log(req.body + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    console.log(req.body.machineName, req.body.machineDistro, req.body.machineRam);
+
+
+    let vagrantfile = './vagrantfile';
+    if (fs.existsSync(vagrantfile)){
+        console.log("FILE EXISTS");
+        fs.unlink(vagrantfile, err => console.log(err));
+    }  
+      
+    fs.appendFile('./vagrantfile', `Vagrant.configure("2") do |config|`, err => console.log(err));
+    fs.appendFile('./vagrantfile', req.body.machineDistro, (err) => {
+        if(err) throw err;
+        console.log('updated!');
+    })
     
+
+
     machine.save()
         .then((result) => {
             res.redirect('/thanks');
